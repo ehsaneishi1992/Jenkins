@@ -97,10 +97,23 @@ Then, copy the public key to the remote machine:
 ```bash
 ssh-copy-id root@agent-server-ip
 ```
+Add the Host Key Manually: From the Jenkins server, add the target server’s SSH key to the known_hosts file:
+
+```bash
+ssh-keyscan -p PORT agent-server-ip >> /var/jenkins_home/.ssh/known_hosts
+```
 now "Add Credentials" and create new with "SSH username with private key" kind and Enter Private Key generated in jenkins server
 
 Remember to enter the "Remote root directory" in define node 
 
+Create the Known Hosts File: Ensure the directory /var/jenkins_home/.ssh/ exists and is writable by Jenkins.
+
+```bash
+mkdir -p /var/jenkins_home/.ssh 
+touch /var/jenkins_home/.ssh/known_hosts 
+chmod 600 /var/jenkins_home/.ssh/known_hosts
+chown -R jenkins:jenkins /var/jenkins_home/.ssh
+```
 ### Install OpenJDK via a PPA (Personal Package Archive) in agent server
 ```bash
 apt install software-properties-common

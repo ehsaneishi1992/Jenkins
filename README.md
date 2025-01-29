@@ -88,7 +88,7 @@ sudo adduser jenkins
 sudo usermod -aG sudo jenkins
 
 visudo
-jenkins ALL=(ALL) NOPASSWD: ALL
+jenkins ALL=(ALL) NOPASSWD:ALL
 ```
 ### Use SSH Keys Instead of Passwords:
 

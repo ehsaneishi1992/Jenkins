@@ -86,6 +86,9 @@ usermod -aG docker jenkins
 ```bash
 sudo adduser jenkins
 sudo usermod -aG sudo jenkins
+
+visudo
+jenkins ALL=(ALL) NOPASSWD: ALL
 ```
 ### Use SSH Keys Instead of Passwords:
 

@@ -122,5 +122,5 @@ chown -R jenkins:jenkins /var/jenkins_home/.ssh
 apt install software-properties-common
 add-apt-repository ppa:openjdk-r/ppa
 apt update
-apt install openjdk-11-jdk
+apt install openjdk-17-jdk
 ```

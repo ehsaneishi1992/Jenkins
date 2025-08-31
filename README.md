@@ -95,10 +95,13 @@ jenkins ALL=(ALL) NOPASSWD:ALL
 On the Jenkins server, generate an SSH key pair:
 ```bash
 ssh-keygen -t rsa -b 4096 -C "jenkins@agent-server-ip"
+ssh-keygen -t rsa -b 4096 -C "jenkins@customer1" -f /var/jenkins_home/.ssh/id_rsa_customer1
+ssh-keygen -t rsa -b 4096 -C "jenkins@customer2" -f /var/jenkins_home/.ssh/id_rsa_customer2
 ```
 Then, copy the public key to the remote machine:
 ```bash
 ssh-copy-id root@agent-server-ip
+ssh-copy-id -i /var/jenkins_home/.ssh/id_rsa_customer1.pub -p PORT jenkins@customer1-server-ip
 ```
 Add the Host Key Manually: From the Jenkins server, add the target server’s SSH key to the known_hosts file:
 
